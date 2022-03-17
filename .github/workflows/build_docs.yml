@@ -1,0 +1,40 @@
+name: Build docs
+
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  docs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install Ubuntu dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install build-essential libc-dev pandoc
+      - name: Install python dependencies
+        run: |
+          pip install -U pip
+          pip install wheel
+          pip install nbconvert
+          pip install .
+          pip install mkdocs mkdocs-material
+
+      - name: Create Qickstart
+        run: jupyter nbconvert --to markdown 'tutorials/Q*.ipynb' --output-dir='./docs/'
+
+      - name: Create Markdown pages from notebooks and combine into one page
+        run: |
+          jupyter nbconvert --to markdown 'tutorials/T*.ipynb' --output-dir='./docs/tutorials'
+          pandoc -t markdown_mmd docs/tutorials/*.md > docs/tutorials/Combined_Tutorials.md
+      - name: Deploy docs
+        run: |
+          mkdocs gh-deploy --force

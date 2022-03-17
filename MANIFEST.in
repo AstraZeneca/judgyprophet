@@ -1,0 +1,2 @@
+include judgyprophet/stan/judgyprophet.stan
+include judgyprophet/stan/build/.buildkeep

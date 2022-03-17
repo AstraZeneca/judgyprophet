@@ -1,0 +1,33 @@
+site_name: judgyprophet
+site_description: forecasting incorporating known business events
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  navigation_depth: 3
+  features:
+    - toc.integrate
+    - content.code.annotate
+    - toc.follow
+    - navigation.sections
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+
+
+nav:
+  - Home: index.md
+  - Tutorials:
+    - Quickstart: Quickstart.md
+    - Tutorial 1 - Level Events: "tutorials/T1 - Level Events.md"
+    - Tutorial 2 - Trend Events: "tutorials/T2 - Trend Events.md"
+    - Tutorial 3 - Seasonality: "tutorials/T3 - Seasonality.md"
+    - Tutorial 4 - Hyperparameters: "tutorials/T4 - Hyperparameters.md"
+  - Technical Docs:
+    - Technical Description: technical_description.md
+    - API Reference: reference.md

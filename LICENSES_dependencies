@@ -1,0 +1,18 @@
+The judgyprophet repository and source distributions depend on several libraries that are
+compatibly licensed.  We list these here.
+
+Name: numpy
+License: BSD-3-Clause
+  For details, see https://github.com/numpy/numpy/blob/main/LICENSE.txt
+
+Name: scipy
+License: BSD-3-Clause
+  For details, see https://github.com/scipy/scipy/blob/master/LICENSE.txt
+
+Name: pandas
+License: BSD-3-Clause
+  For details, see https://github.com/pandas-dev/pandas/blob/master/LICENSE
+
+Name: pystan
+License: ISC License
+  For details, see https://github.com/stan-dev/pystan/blob/main/LICENSE

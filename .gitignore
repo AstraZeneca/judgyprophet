@@ -1,0 +1,17 @@
+*.ipynb_checkpoints*
+*.pkl
+.vscode
+*.pyc
+*__pycache__*
+*data*
+*.csv
+*.xls*
+.Rproj.user
+*.Rproj
+.Rhistory
+*.DS_Store
+*.zip*
+tests/scratch.py
+*scratch.py*
+*.egg-info/
+build/*

@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "judgyprophet"
+version = "0.1.0"
+description = "Bayesian judgmental adjustment forecasting library."
+authors = [
+    "Jack Baker <jack.baker@astrazeneca.com>",
+    "Isabell Grübner <isabell.gruebner@astrazeneca.com>",
+    "Andrew Thwaites"
+]
+license = "Apache-2.0"
+
+[tool.poetry.dependencies]
+python = ">=3.8, <3.11"
+numpy = "^1.22.2"
+pandas = ">=1."
+scipy = "^1.8.0"
+pystan = "~=2.19.1.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.1"
+flake8 = "^4.0.1"
+pylint = "^2.12.2"
+mkdocs = "^1.2.3"
+mkdocs-material = "^8.2.1"
+matplotlib = "^3.5.1"
+seaborn = "^0.11.2"
+prophet = "^1.0.1"
+pystan = "==2.19.1.1"
+jupyterlab = "^3.2.9"
+nbconvert = "^6.4.2"
+black = "22.1.0"
+isort = "^5.10.1"
+pre-commit = "^2.17.0"
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
