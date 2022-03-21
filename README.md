@@ -45,11 +45,11 @@ This will take a while. But you only have to run this once, after the initial in
 
 # Documentation
 
-Full documentation is available on our Github Pages site [here](https://silver-fortnight-fd961635.pages.github.io/).
+Full documentation is available on our Github Pages site [here](https://astrazeneca.github.io/judgyprophet/).
 
 Scroll down for a quickstart tutorial.
 
-A runnable jupyter notebook version of the quickstart tutorial is available [here](https://github.com/AZ-AI/judgyprophet/blob/main/tutorials/Quickstart.ipynb)
+A runnable jupyter notebook version of the quickstart tutorial is available [here](https://github.com/AstraZeneca/judgyprophet/blob/main/tutorials/Quickstart.ipynb)
 
 # Roadmap
 
