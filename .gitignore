@@ -15,3 +15,4 @@ tests/scratch.py
 *scratch.py*
 *.egg-info/
 build/*
+dist/

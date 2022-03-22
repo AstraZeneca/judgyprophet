@@ -1,13 +1,17 @@
 [tool.poetry]
 name = "judgyprophet"
-version = "0.1.0"
-description = "Bayesian judgmental adjustment forecasting library."
+version = "0.1.1"
+description = "Forecasting for knowable future events using Bayesian informative priors (forecasting with judgmental-adjustment)."
 authors = [
     "Jack Baker <jack.baker@astrazeneca.com>",
     "Isabell Grübner <isabell.gruebner@astrazeneca.com>",
     "Andrew Thwaites"
 ]
 license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/AstraZeneca/judgyprophet"
+repository = "https://github.com/AstraZeneca/judgyprophet"
+documentation = "https://astrazeneca.github.io/judgyprophet/"
 
 [tool.poetry.dependencies]
 python = ">=3.8, <3.11"
