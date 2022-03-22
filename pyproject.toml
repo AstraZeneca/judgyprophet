@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "judgyprophet"
-version = "0.1.1"
+version = "0.1.0"
 description = "Forecasting for knowable future events using Bayesian informative priors (forecasting with judgmental-adjustment)."
 authors = [
     "Jack Baker <jack.baker@astrazeneca.com>",
