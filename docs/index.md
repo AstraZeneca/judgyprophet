@@ -31,7 +31,7 @@ pip install judgyprophet
 So to use `judgyprophet`, you have to compile the model. Do this in the shell using
 
 ```
-python -c "from judgyprophet import JudgyProphet; JudgyProphet().compile()
+python -c "from judgyprophet import JudgyProphet; JudgyProphet().compile()"
 ```
 
 or in python using
