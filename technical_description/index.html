@@ -1,0 +1,556 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="forecasting incorporating known business events">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="judgyprophet" class="md-header__button md-logo" aria-label="judgyprophet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            judgyprophet
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Technical Description
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="judgyprophet" class="md-nav__button md-logo" aria-label="judgyprophet" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    judgyprophet
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Quickstart/" class="md-nav__link">
+        Quickstart
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/T1%20-%20Level%20Events/" class="md-nav__link">
+        Tutorial 1 - Level Events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/T2%20-%20Trend%20Events/" class="md-nav__link">
+        Tutorial 2 - Trend Events
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/T3%20-%20Seasonality/" class="md-nav__link">
+        Tutorial 3 - Seasonality
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/T4%20-%20Hyperparameters/" class="md-nav__link">
+        Tutorial 4 - Hyperparameters
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Technical Docs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Technical Docs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Technical Docs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Technical Description
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/" class="md-nav__link">
+        API Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="introduction">Introduction</h1>
+<p>Forecasters are commonly asked to account for <em>known future events</em>. These are large business events which will have an effect on the forecast for e.g. the sales of a product, which it is known will happen ahead of time. Examples could be:</p>
+<ul>
+<li>An existing product entering a new market</li>
+<li>A price change to a product</li>
+<li>...</li>
+</ul>
+<p>The business will often have critical information about how they believe these events will affect the sales of a given product. At the time, this information is the best we have as to how this event will affect product sales. Since they will cause significant bias in an actuals only based forecasting algorithm, it is important to incorporate this information into the forecast.</p>
+<p>One option is to use <em>judgmental post-adjustment</em>. This is where business experts will change the output of a statistical forecast based on what they think will happen when this event occurs. This typically works quite well <em>before</em> an event, as it is adjusting the forecast for information it is unable to use. But after an event has occurred, it's difficult to know how much information about the event the statistical forecast is using. Since the outcome of these events can vary rapidly, and the outcome can be very different to what is expected, business information can become outdated. This can lead to adjusted forecasts that are more inaccurate than the statistical base.</p>
+<p>Another option is to use regressors. We tried this method ourselves. It worked well before the event as it would more often than not adjust the forecasting algorithm for its known bias. Once again though, after the event occurred this regressor degraded quickly even if the outcome of the event deviated only slightly from what was expected (which happens most of the time). This could lead to large forecasting errors.</p>
+<p><code>judgyprophet</code> aims to solve this problem by encoding these events using Bayesian informative priors. Before the event occurs, <code>judgyprophet</code> uses the business information to adjust likely biases in its statistical forecast due to a known business event. After the event, <code>judgyprophet</code> adjusts its estimate using Bayesian updating. This attempts to balance the expert knowledge of the business, with what is actually being observed in the actuals. This enables it to adjust rapidly as the event deviates from what is expected by the business.</p>
+<p>As the name suggests, <code>judgyprophet</code> is based on the <code>prophet</code> algorithm, and uses concept of changepoints. It splits the changepoints into two groups: business known changepoints -- which are used to encode events with known business information; business unspecified changepoints -- which act more like the <code>prophet</code> changepoints and enable the forecast to adjust to unanticipated changes in trend and level of the timeseries.</p>
+<h1 id="the-forecasting-model">The forecasting model</h1>
+<p>Similar to Prophet, we use a decomposable timeseries model
+\[
+    y(t) = g(t) + s(t) + \epsilon_t,
+\]
+where \(g(t)\) is the trend function, and \(s(t)\) is the seasonality function.</p>
+<p>The main difference being we further decompose \(g(t)\) into three components
+\[
+    g(t) = L(t) + M(t) + U(t).
+\]
+These components are defined as follows:</p>
+<ul>
+<li>\(L(t)\) -- business known level events. These are events that lead to sudden level shifts in the timeseries that the business know about ahead of time. An example might be the \$ sales for an inelastic good (e.g. food) when there is a price increase.</li>
+<li>\(M(t)\) -- business known trend events. These are events that lead to a steady increase in the target that the business know about ahead of time. An example might be the product sales for an existing product that is entering a new market (e.g. a console game being released in a new country).</li>
+<li>\(U(t)\) -- unspecified changepoint events. These are events that cause a change in trend that are unanticipated by the business ahead of time. These are equivalent to Prophet's linear changepoints. They help to capture unanticipated changes in the target.</li>
+</ul>
+<h2 id="business-known-level-events-lt">Business Known Level Events: \(L(t)\)</h2>
+<p>Level events are business known events that will lead to sudden level shifts in the timeseries (see the quickstart tutorial for an example).</p>
+<p>Suppose the business identify \(J\) possible level events, define the business estimate of the change in level for event \(j \in J\), which occurs at time \(\tau_j\), to be \(l_{0j}\), and define the parameter defining the unknown actual level change to be \(l_j\).</p>
+<p>Then the level event model is defined as follows
+\[
+    L(t) = \sum_{j=1}^J l_j \mathbf 1 \{t \geq \tau_j \},
+\]
+where \(c_l\) is drawn from the following prior
+\[
+    c_j \sim N(l_{0j}, \sigma_l^2), \qquad \text{for } j = 1, ..., J.
+\]
+Here \(N\) denotes the normal distribution; \(\sigma_c\) is the standard deviation set for the level events, which is a settable parameter in <code>judgyprophet</code>.</p>
+<p>The idea is that before the event is observed, \(l_{0j}\) is used as the estimate for the level change, as that is the best estimate we have. But as we move to observing the event, the actuals are used to learn a better value for \(l_j\) using Bayesian updating.</p>
+<p>Because of the prior we have set, \(l_j\) will be penalized from taking values away from \(l_{0j}\). This ensures that \(l_j\) won't make large jumps from the business estimate when not much data has been observed. This stops the algorithm from making erratic forecasts. This technique is similar to the idea of ridge regression.</p>
+<h2 id="business-known-trend-events-mt">Business Known Trend Events: \(M(t)\)</h2>
+<p>Trend events are business known events that will lead to a trend change in the timeseries after the event (e.g. a gradual and repeating increase in sales. See the quickstart tutorial for an example).</p>
+<p>We start by discussing the simplest trend event available in <code>judgyprophet</code>: a linear one. It's important to think about damping in our model though. Often when a product is released to a new market, there is an increase in sales, followed by a steady slow down of this as the market is saturated. This can be modelled in <code>judgyprophet</code>, and is covered in the next subsection.</p>
+<p>Suppose the business identify \(I\) possible trend events, define the business estimate of the change in trend for event \(i\), which occurs at time \(\tau_i\), to be \(m_{0i}\), and define the parameter defining the unknown actual trend change to be \(m_i\).</p>
+<p>Then the trend event model is defined as follows</p>
+<p>\[
+    M(t) = \sum_{i=1}^I m_i s_i(t).
+\]
+Here we define \(s_i(t) = \max\{t - \tau_i, 0\}\), i.e.\ before the event time \(\tau_i\) \(s_i(t)\) is 0, and after that it measures the time since the event.</p>
+<p>Similarly to for level events we define the prior for \(m_i\) to be
+\[
+    m_i \sim N(m_{0i}, \sigma_m^2),
+\]
+where \(\sigma_m\) is the standard deviation set for trend events. It sets the sensitivity of the model to the actuals post any trend event.</p>
+<h2 id="damping">Damping</h2>
+<p>We found using logistics curves, as in Prophet, to handle damping to be too sensitive to the maximum capacity constant (defined by \(C\) in Prophet). Therefore we instead use a model inspired by Holt's damped trend exponential smoothing model (see e.g. <a href="https://otexts.com/fpp3/holt.html">Forecasting Principle and Practice. Hyndman, Athanasopoulos.</a>).</p>
+<p>This model is very similar to the model used for linear trends. But we add one further hyperparameter for each event \(\gamma_i\). This parameter defines the level of damping for event \(i\) in exactly the same way as Holt's damped trend method (see e.g. <a href="https://otexts.com/fpp3/holt.html">Forecasting Principle and Practice. Hyndman, Athanasopoulos.</a>). This constant is typically set between 0.8 and 1, where 1 is equivalent to a linear trend, and 0.8 indicates quite heavy damping.</p>
+<p>First set \(d(t)\) to be the following
+\[
+    d_i(t) = \frac{(1 - \gamma_i^t)}{1 - \gamma_i} \mathbf 1 \{t &gt; 0\}.
+\]
+Then we define the damped trend to be
+\[
+    M(t) = \sum_{i=1}^I m_i d_i(\max\{t - \tau_i, 0\}).
+\]
+We assign the same prior to \(m_i\) as in the linear trend case.</p>
+<p>This is similar to Holt's damping with trend because we can expand \(d_i(t)\) using the properties of geometric series to get
+\[
+    d_i(t) = \frac{1 - \gamma_i^t}{1 - \gamma_i} \mathbf 1 \{t &gt; 0\} = \mathbf 1 \{t &gt; 0\} \sum_{t=0}^{t-1} \gamma^t.
+\]
+This is very similar in form to the exponential smoothing equations.</p>
+<p>For now, \(\gamma_i\) is a hyperparameter rather than a learned Bayesian parameter, i.e.\ it will not be updated as we observe actuals. We found the parameter was quite poorly predicted when it is modelled. We have added trying to add this as a learnt parameter again to the roadmap.</p>
+<h2 id="unspecified-changepoint-events-ut">Unspecified changepoint events: \(U(t)\)</h2>
+<p>These events are very similar to Prophet's original concept of changepoints. These are sudden changes in level or trend in the training period of the timeseries. Unlike Prophet, we do not use these changes for prediction, only to capture observed, unanticipated events in the timeseries. They are normally evenly dispersed across the timeseries, or exact locations can be specified by the user.</p>
+<p>Let there be \(k \in K\) unspecified changepoint events, occurring at time \(\tau_k\), let the unknown level and trend changes be \(v_k\) and \(w_k\) respectively, then we define
+\[
+    U(t) = \sum_{k=1}^K v_k \mathbf 1\{t \geq \tau_k\} + w_k \max\{t - \tau_k, 0\}.
+\]
+Similar to Prophet, in order to penalise using these unspecified changepoints when unnecessary, rather than a normal prior as for the above events, we use a Laplace prior. This is equivalent to setting an \(L_1\) or Lasso penalty on the changes -- hopefully sending them to 0 if they are unnecessary. Specifically we set
+\[
+    v_k, w_k \sim \text{Laplace}(0, \sigma_U), \qquad \text{for }k = 1, ..., K.
+\]</p>
+<h2 id="seasonality">Seasonality</h2>
+<p>Similar to Prophet, we encode seasonality using Fourier series. The user defines the seasonal period \(s_S\), and the fourier period \(s_F\) (this is automatically set to \(s_S - 1\) if unspecified). Then seasonality is defined as
+\[
+    s(t) = \sum_{j=1}^{s_F} \beta_j f_j(t),
+\]
+where
+\[
+    f_j(t) = \mathbf 1\{j \text{mod} 2 = 0\} \cos\left(\frac{2 \pi \lfloor j / 2 \rfloor t}{s_F}\right) + \mathbf 1\{j \text{mod} 2 = 1\} \sin\left(\frac{2 \pi (\lfloor j / 2 \rfloor + 1) t}{s_F}\right).
+\]
+For each seasonal coefficient \(\beta_j\), we set the prior
+\[
+    \beta_j \sim N(0, \sigma_s).
+\]</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../tutorials/T4%20-%20Hyperparameters/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tutorial 4 - Hyperparameters" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Tutorial 4 - Hyperparameters
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../reference/" class="md-footer__link md-footer__link--next" aria-label="Next: API Reference" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              API Reference
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["toc.integrate", "content.code.annotate", "toc.follow", "navigation.sections"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+    
+  </body>
+</html>
